@@ -1,0 +1,22 @@
+{
+  "name": "rixongile-manyobe-255-string-calculator",
+  "version": "1.0.0",
+  "description": "string-calculator (255) For raw project instructions see: https://raw.githubusercontent.com/Umuzi-org/tech-department/master/content/projects/tdd/string-calculator/_index.md",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Umuzi-org/Rixongile-Manyobe-255-string-calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Umuzi-org/Rixongile-Manyobe-255-string-calculator/issues"
+  },
+  "homepage": "https://github.com/Umuzi-org/Rixongile-Manyobe-255-string-calculator#readme",
+  "dependencies": {
+    "jasmine": "^3.5.0"
+  }
+}
