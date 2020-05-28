@@ -2,25 +2,35 @@
     if (str === ""){
       return 0
     }
+    if ((/.+(?=\/\/)/g).test(str) == true && /\n/g.test(str) == true) {
+      throw new Error("invalid input");
+    }
+    if (
+      /\d$/g.test(str) == false &&
+      str.length > 0 &&
+      /\s/g.test(str) == true
+    ) {
+      throw new Error("invalid input");
+    }
     const delimiter = getDelimiter(str)
     const formattedInput = formatInput(str)
     return calculateSum(getNumbers(formattedInput, delimiter)) 
   }
   function formatInput(str){
-    const delimiterRegex = /^(\/\/.*\n)/
-    const matches = delimiterRegex.exec(str)
+    const delimiterExp = /(\/\/.+\n)/g
+    const matches =delimiterExp.exec(str)
     if(matches && matches.length > 0){
-      return str.replace(delimiterRegex,"")
+      return str.replace(delimiterExp,"")
     }
     return str
   }
   function getDelimiter(str) {
     const delimiters = []
-    const multipleDelimiterRegexp = /(?:^\/\/)?\[([^\[\]]+)\]\n?/g
-    let matches = multipleDelimiterRegexp.exec(str)
+    const multipleDelimiterExp = /(?:\/\/)?\[([^\[\]]*)\]\n?/g
+    let matches = multipleDelimiterExp.exec(str)
     for (let i = 0; matches !== null; i++) {
       delimiters.push(matches[1])
-     matches = multipleDelimiterRegexp.exec(str)  
+     matches = multipleDelimiterExp.exec(str)  
     }
     if(delimiters.length > 0){
       return new RegExp("["+delimiters.join("")+"]")
@@ -53,5 +63,5 @@
     }
     return finalSum
   }
-// console.log(add("-1,-2,3,4"))
+console.log(add("//;\n1000;1;2"))
 module.exports = {add}
